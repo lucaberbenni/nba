@@ -1,6 +1,3 @@
-# nba
-web scraping with nba_api to make prediction of future games.
-
 This project is a data scraper for NBA statistics using the NBA API and Python. It allows you to gather and analyze various NBA data, including player game logs, career stats, league game results, and box scores.
 
 The main features of this project are:
