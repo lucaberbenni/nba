@@ -8,25 +8,20 @@ from nba_api.stats.endpoints import playergamelog, leaguegamefinder, playercaree
 from nba_api.stats.library.parameters import SeasonAll
 
 
-
-# gamelog_bron = playergamelog.PlayerGameLog(player_id='2544', season='2017')
-# gamelog_bron_df = gamelog_bron.get_data_frames()[0]
-# print(gamelog_bron_df)
-
-# gamelog_bron_all = playergamelog.PlayerGameLog(player_id='2544', season= SeasonAll.all)
-# gamelog_bron_df_all = gamelog_bron_all.get_data_frames()[0]
-# print(gamelog_bron_df_all)
-
 def games_df():
     '''
-    scrape, append to a df and save it all leage games
+    Fetch NBA league game data using the LeagueGameFinder class.
+    Save the fetched game data as a CSV file named 'league_games.csv'.
     '''
     league_games = leaguegamefinder.LeagueGameFinder().get_data_frames()[0]
     league_games.to_csv('df/league_games.csv')
 
 def active_player_stats():
-    '''
-    scrape, append to a df carrer stats of every single active player and save it as csv
+    ''' 
+    This function retrieves and combines the career statistics of active NBA players. 
+    It iterates through each player, checks their active status, fetches their career stats,
+    and concatenates them into a single DataFrame. The combined player statistics are then 
+    saved as a CSV file named 'player_stats.csv' for further analysis.
     '''
     conc_df = pd.DataFrame()
     player_dict = players.get_players()
@@ -41,7 +36,10 @@ def active_player_stats():
 
 def box_df():
     '''
-    scrape, append to a df and save through stats of every nba games of every nba team
+    This function creates a DataFrame of NBA box scores for games involving all teams in the league.
+    It retrieves a dictionary of team information, extracts the team abbreviations, and fetches the
+    league game data using the LeagueGameFinder class. Finally, it filters the game data to include
+    only games involving the teams in the league, resulting in a DataFrame of box scores for analysis.
     '''
     team_dict = teams.get_teams()
     teams = []
@@ -60,3 +58,6 @@ def box_df():
         
         print(f"{box_score_df['GAME_ID'].nunique()}/{nba_games['GAME_ID'].nunique()}")
     box_score_df.to_csv('df/box_score.csv')
+
+df = pd.read_csv('df/box_score.csv')
+print(df)
