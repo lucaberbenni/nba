@@ -1,30 +1,19 @@
-This project is a data scraper for NBA statistics using the NBA API and Python. It allows you to gather and analyze various NBA data, including player game logs, career stats, league game results, and box scores.
+**Project Description: NBA Game Prediction using Machine Learning**
 
-The main features of this project are:
+This project is a Python-based application for predicting the outcome of NBA games using machine learning techniques. It leverages historical game data and various features to train classification models that can forecast the winning team in future games. The project consists of three Python files: `get_data_live.py`, `parse_data_live.py`, and `predict_live.py`, which are available on GitHub.
 
-1. **Player Game Logs**: Retrieve and store the game logs of specific players for a given season or for their entire career.
+**1. get_data_live.py**
 
-2. **League Game Results**: Scrape and save all the game results for the entire NBA league, including regular season and playoff games.
+The `get_data_live.py` file contains functions for scraping NBA game data from the web using the Playwright library. It asynchronously retrieves HTML content from web pages, navigates through the website, and saves the data locally. The functions in this file retrieve standings and box scores for NBA seasons from the Basketball Reference website.
 
-3. **Player Career Stats**: Gather and compile career statistics for every active NBA player. The data includes various performance metrics and statistical categories.
+**2. parse_data_live.py**
 
-4. **Box Scores**: Collect and store advanced box score data for every NBA game. This includes in-depth statistics and performance measurements for both teams and individual players.
+The `parse_data_live.py` file focuses on processing and transforming the scraped data to prepare it for machine learning. It utilizes the BeautifulSoup library to parse the HTML content and extract relevant information. The file includes functions for reading line scores, team statistics, and season information from the scraped HTML. Additionally, it performs data cleaning, feature engineering, and target variable creation for model training.
 
-The project utilizes the NBA API and leverages the `nba_api` Python library to interact with the API endpoints. It makes use of the `pandas` library for data manipulation and storage, allowing you to save the collected data as CSV files for further analysis.
+**3. predict_live.py**
 
-By using this NBA data scraper, you can access comprehensive and up-to-date statistics to perform detailed analysis, create visualizations, and gain valuable insights into player performance, team dynamics, and league trends.
+The `predict_live.py` file incorporates machine learning algorithms to build and evaluate predictive models for NBA game outcomes. It utilizes popular libraries such as pandas, scikit-learn, and RidgeClassifier for data manipulation, model training, and evaluation. The file implements a time-series cross-validation approach to account for temporal dependencies in the data. It applies feature selection techniques and trains classification models such as RidgeClassifier and RandomForestClassifier to predict the winning team in NBA games.
 
-Please note that continuous usage of the NBA API may be subject to rate limits and usage restrictions. Make sure to review and comply with the API terms of use.
+The project follows a systematic workflow, starting with web scraping to collect relevant NBA game data, followed by data processing to clean and transform the data for model training. Finally, the prediction module employs machine learning algorithms to forecast game outcomes based on historical patterns.
 
-Feel free to explore, modify, and enhance this NBA data scraper to suit your specific data collection and analysis needs.
-
-**Dependencies:**
-
-- `pandas`: Data manipulation and storage library.
-- `numpy`: Numerical computing library.
-- `requests`: HTTP library for making API requests.
-- `nba_api`: Python library for accessing the NBA API.
-
-Please make sure to install the required dependencies and set up the necessary API credentials before running the scripts.
-
-Enjoy exploring NBA data with this versatile data scraper!
+The project aims to provide insights into the potential of machine learning in predicting NBA game results, which can have applications in sports analytics, betting, and fan engagement.
